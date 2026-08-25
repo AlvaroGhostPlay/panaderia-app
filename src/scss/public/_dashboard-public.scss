@@ -1,0 +1,173 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.section-one__left {
+  .color{
+    color: v.$texto-secundario;
+  }
+
+  .p, .context, .titulo-uno{
+    margin-top: 5rem;
+  }
+
+  .titulo-uno {
+    color: v.$texto-cuarto;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+  }
+
+  .context, .p {
+    margin-bottom: 1rem;
+    color: v.$primario;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .context {
+    text-transform: lowercase;
+    text-align: justify;
+  }
+
+  .botones {
+
+    margin-top: 4.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .boton-text {
+      font-size: 1.8rem;
+    }
+
+    .boton-one, .boton-two {
+      display: flex;
+      align-items: center;
+      font-size: 5rem;
+      font-weight: 800;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .boton-one {
+      background-color: v.$primario;
+      color: v.$texto-terceario;
+
+      &:hover {
+        box-shadow: 0 0 0 2px v.$primario;
+        background: transparent;
+        color: v.$texto-quinto;
+      }
+    }
+
+    .boton-two {
+      box-shadow: 0 0 0 2px v.$primario;
+      background: transparent;
+      color: v.$texto-quinto;
+
+      &:hover {
+        background-color: v.$primario;
+        color: v.$texto-terceario;
+      }
+    }
+  }
+  .flotantes {
+    margin-top: 7rem;
+    gap: 2rem;
+    .flotante{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  }
+}
+
+.section-tow{
+    display: block;
+    margin-top: 2.5rem;
+    padding: 2rem;
+
+    .beneficio-item {
+      margin: 3.5rem auto 0;
+      width: fit-content;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+      flex: 1; /* Hace que todos los bloques midan exactamente lo mismo */
+      justify-content: left; /* Centra el contenido dentro de su propio bloque */
+      display: flex;
+    }
+}
+
+  @include m.tablet {
+    .section-one {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      gap: 2rem;
+
+      .botones {
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      .boton-one, .boton-two {
+        transition: transform 0.3s ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .section-tow{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 1.5rem;
+        .beneficio-item{
+          text-align: left;
+          width: 100%;
+          margin: 2.5rem 0 0 0;
+          /* TRUCO MÁGICO: Agrega borde a todos menos al último */
+          &:nth-child(odd):not(:last-child) {
+            border-right: 1px solid #dcd6cd; /* Línea gris sutil intermedia */
+          }
+        }
+      }
+  }
+
+  @include m.telefono {
+    .section-one {
+      .flotantes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+  @include m.desktop {
+    .section-one {
+      .flotantes {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .section-tow{
+        display: flex;
+        gap: 2rem;
+
+        .beneficio-item{
+          margin-top: 2.5rem;
+          justify-content: center;
+          /* TRUCO MÁGICO: Agrega borde a todos menos al último */
+          &:not(:last-child) {
+            border-right: 1px solid #dcd6cd; /* Línea gris sutil intermedia */
+          }
+        }
+    }
+  }
+
+
+
+
+
