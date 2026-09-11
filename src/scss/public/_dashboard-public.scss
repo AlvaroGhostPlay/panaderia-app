@@ -1,173 +1,364 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.section-one__left {
-  .color{
-    color: v.$texto-secundario;
-  }
 
-  .p, .context, .titulo-uno{
+// =====================================================
+// UTILIDADES
+// =====================================================
+
+.text-primary {
+  color: v.$primario;
+}
+
+.text-secondary {
+  color: v.$texto-secundario;
+}
+
+.text-accent {
+  color: v.$tercero;
+}
+
+.text-light {
+  color: v.$texto-quinto;
+}
+
+// =====================================================
+// HERO
+// =====================================================
+
+.hero__content {
+
+  .hero__eyebrow,
+  .hero__title {
     margin-top: 5rem;
   }
+}
 
-  .titulo-uno {
+.hero__image img{
+  width: 100%;
+  height-max: 85%;
+  height: 60rem;
+  object-fit: cover; /* Equivalente a background-size: cover para imágenes */
+}
+
+.hero__eyebrow {
+  margin-bottom: 1rem;
+  color: v.$primario;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  margin-bottom: 2.5rem;
+  color: v.$texto-cuarto;
+  font-weight: 500;
+}
+
+.hero__description {
+  margin-bottom: 1rem;
+  color: v.$primario;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: justify;
+}
+
+
+// =====================================================
+// BOTONES
+// =====================================================
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 4.5rem;
+}
+
+.button--primary, .button--secondary, .order__button, .register__button {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.button--primary, .order__button, .register__button {
+  background-color: v.$primario;
+  color: v.$texto-terceario;
+
+  &:hover {
+    box-shadow: 0 0 0 2px v.$primario;
+    background: transparent;
+    color: v.$texto-quinto;
+  }
+}
+
+.button--secondary {
+  background: transparent;
+  box-shadow: 0 0 0 2px v.$primario;
+  color: v.$texto-quinto;
+
+  &:hover {
+    background-color: v.$primario;
+    color: v.$texto-terceario;
+  }
+}
+
+
+// =====================================================
+// FEATURES DEL HERO
+// =====================================================
+
+.hero__features {
+  display: grid;
+  gap: 2rem;
+  margin-top: 7rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.feature__content {
+
+  p {
+    margin: 0;
+  }
+}
+
+// =====================================================
+// SECCIONES
+// =====================================================
+
+.section {
+  margin-top: 6.5rem;
+}
+
+.section__title {
+  margin: 0 0 2rem;
+  color: v.$texto-cuarto;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+// =====================================================
+// GRID DE TARJETAS
+// =====================================================
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+
+// =====================================================
+// TARJETAS
+// =====================================================
+
+.info-card {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  width: 100%;
+  margin-top: 2.5rem;
+
+  text-align: left;
+
+  &:not(:last-child) {
+    border-right: none;
+  }
+}
+
+.info-card__content {
+  p {
+    margin: 0;
     color: v.$texto-cuarto;
-    font-weight: 500;
-    margin-bottom: 2.5rem;
+    text-align: center;
   }
+}
 
-  .context, .p {
-    margin-bottom: 1rem;
-    color: v.$primario;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.5rem;
+// =====================================================
+// ORDENAR
+// =====================================================
+
+.order__title, .register__title{
+  text-align: center;
+  color: v.$texto-quinto;
+}
+
+.order--section{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.order__content, .register__content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.order__button, .register__button{
+  position: absolute;
+
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &:hover{
+    background-color: v.$secundario;
   }
+}
 
-  .context {
-    text-transform: lowercase;
-    text-align: justify;
-  }
+.register__button{
+  top: 50%;
+  transform: translate(-35%, -50%);
+}
 
-  .botones {
+.order__features{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1.5rem;
+  top: 68%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: .5rem;
 
-    margin-top: 4.5rem;
-    display: flex;
-    flex-direction: column;
-
-    .boton-text {
-      font-size: 1.8rem;
-    }
-
-    .boton-one, .boton-two {
-      display: flex;
-      align-items: center;
-      font-size: 5rem;
-      font-weight: 800;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .boton-one {
-      background-color: v.$primario;
-      color: v.$texto-terceario;
-
-      &:hover {
-        box-shadow: 0 0 0 2px v.$primario;
-        background: transparent;
-        color: v.$texto-quinto;
+  .feature{
+    .feature__content{
+      p{
+        font-size: 1.1rem;
       }
     }
+  }
+}
 
-    .boton-two {
-      box-shadow: 0 0 0 2px v.$primario;
-      background: transparent;
-      color: v.$texto-quinto;
+// =====================================================
+// REGISTRO
+// =====================================================
 
-      &:hover {
-        background-color: v.$primario;
-        color: v.$texto-terceario;
-      }
+.register__title{
+  color: v.$texto-cuarto;
+}
+
+// =====================================================
+// TABLET
+// =====================================================
+
+@include m.tablet {
+
+  .button--primary, .button--secondary {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
     }
   }
-  .flotantes {
-    margin-top: 7rem;
+
+  .hero {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 2rem;
-    .flotante{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1.5rem;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .info-card {
+    justify-content: center;
+    &:nth-child(odd) {
+      border-right: 1px solid #dcd6cd;
+    }
+  }
+
+  .info-card__content{
+    p{
+      text-align: left;
     }
   }
 }
 
-.section-tow{
-    display: block;
-    margin-top: 2.5rem;
-    padding: 2rem;
-
-    .beneficio-item {
-      margin: 3.5rem auto 0;
-      width: fit-content;
-      align-items: center;
-      text-align: center;
-      gap: 1.5rem;
-      flex: 1; /* Hace que todos los bloques midan exactamente lo mismo */
-      justify-content: left; /* Centra el contenido dentro de su propio bloque */
-      display: flex;
-    }
+.order__button, .register__button {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-  @include m.tablet {
-    .section-one {
-      display: grid;
-      grid-template-columns: 50% 50%;
-      gap: 2rem;
+// =====================================================
+// TELÉFONO
+// =====================================================
 
-      .botones {
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
+@include m.telefono {
 
-      .boton-one, .boton-two {
-        transition: transform 0.3s ease;
+  .hero__features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
-    }
 
-    .section-tow{
-        display: grid;
-        grid-template-columns: 50% 50%;
-        gap: 1.5rem;
-        .beneficio-item{
-          text-align: left;
-          width: 100%;
-          margin: 2.5rem 0 0 0;
-          /* TRUCO MÁGICO: Agrega borde a todos menos al último */
-          &:nth-child(odd):not(:last-child) {
-            border-right: 1px solid #dcd6cd; /* Línea gris sutil intermedia */
-          }
-        }
-      }
+// =====================================================
+// DESKTOP
+// =====================================================
+
+@include m.desktop {
+
+  .hero__features {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  @include m.telefono {
-    .section-one {
-      .flotantes {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
+  .cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .info-card {
+    display: flex;
+    &:not(:last-child) {
+      border-right: 1px solid #dcd6cd;
     }
   }
 
-  @include m.desktop {
-    .section-one {
-      .flotantes {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-      }
-    }
-
-    .section-tow{
-        display: flex;
-        gap: 2rem;
-
-        .beneficio-item{
-          margin-top: 2.5rem;
-          justify-content: center;
-          /* TRUCO MÁGICO: Agrega borde a todos menos al último */
-          &:not(:last-child) {
-            border-right: 1px solid #dcd6cd; /* Línea gris sutil intermedia */
-          }
-        }
+  .info-card__content{
+    p{
+      text-align: left;
     }
   }
 
+  .order__button, .register__button {
+    position: absolute;
+    font-size: 3.4rem;
+    font-weight: bold;
+  }
 
-
-
-
+  .order__features{
+    .feature{
+      .feature__content{
+        p{
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

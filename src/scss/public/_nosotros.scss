@@ -1,0 +1,76 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.we{
+  .we-title{
+    text-align: center;
+    color: v.$texto-cuarto;
+  }
+
+  .we-section{
+    margin-top: 4rem;
+    &.we-section--reverse {
+      .we-image {
+        order: 2; /* Pasa de la columna 1 a la 2 */
+      }
+      .we-message {
+        order: 1; /* Pasa de la columna 2 a la 1 */
+      }
+    }
+
+    .we-content{
+      display: grid;
+      .we-image{
+        margin-top: 2rem;
+      }
+    }
+
+    .we-image{
+      background-image: url("../../public/arte_login.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: auto;
+      height: 30rem;
+    }
+
+    .we-message{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: justify;
+      color: v.$texto-cuarto;
+    }
+
+    .we-subtitle{
+      text-align: center;
+      color: v.$texto-cuarto;
+    }
+  }
+}
+
+@include m.tablet{
+  .we{
+    .we-section{
+      &.we-section--reverse {
+        .we-image {
+          order: 1; /* Pasa de la columna 1 a la 2 */
+        }
+        .we-message {
+          order: 2; /* Pasa de la columna 2 a la 1 */
+        }
+      }
+
+      .we-content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        .we-image{
+          margin-top: 0rem;
+        }
+        .we-message{
+          text-align: center;
+        }
+      }
+    }
+  }
+}

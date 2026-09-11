@@ -1,0 +1,879 @@
+<main class="orders">
+
+  <!-- ==========================================
+       HEADER
+  =========================================== -->
+
+  <section class="orders__header">
+
+    <div class="orders__heading">
+
+      <div class="orders__icon">
+        📦
+      </div>
+
+      <div>
+
+        <h1 class="orders__title">
+          Mis pedidos
+        </h1>
+
+        <p class="orders__description">
+          Consulta tus pedidos anteriores y revisa el estado
+          de tus compras.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="orders__summary">
+
+      <div class="orders__summary-item">
+
+        <strong>
+          12
+        </strong>
+
+        <span>
+          Pedidos
+        </span>
+
+      </div>
+
+
+      <div class="orders__summary-divider"></div>
+
+
+      <div class="orders__summary-item">
+
+        <strong>
+          3
+        </strong>
+
+        <span>
+          En proceso
+        </span>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================
+       FILTROS
+  =========================================== -->
+
+  <section class="orders__toolbar">
+
+    <nav class="orders__filters">
+
+      <button
+        type="button"
+        class="orders__filter orders__filter--active"
+      >
+        Todos
+      </button>
+
+      <button
+        type="button"
+        class="orders__filter"
+      >
+        En preparación
+      </button>
+
+      <button
+        type="button"
+        class="orders__filter"
+      >
+        En camino
+      </button>
+
+      <button
+        type="button"
+        class="orders__filter"
+      >
+        Entregados
+      </button>
+
+      <button
+        type="button"
+        class="orders__filter"
+      >
+        Cancelados
+      </button>
+
+    </nav>
+
+
+    <select class="orders__sort">
+
+      <option>
+        Más recientes
+      </option>
+
+      <option>
+        Más antiguos
+      </option>
+
+      <option>
+        Mayor total
+      </option>
+
+      <option>
+        Menor total
+      </option>
+
+    </select>
+
+  </section>
+
+
+  <!-- ==========================================
+       LISTADO DE PEDIDOS
+  =========================================== -->
+
+  <section class="orders__list">
+
+
+    <!-- ========================================
+         PEDIDO 1
+    ========================================= -->
+
+    <article class="orders__card">
+
+
+      <!-- HEADER DEL PEDIDO -->
+
+      <header class="orders__card-header">
+
+        <div class="orders__order-info">
+
+          <span class="orders__order-label">
+            Pedido
+          </span>
+
+          <h2 class="orders__order-number">
+            #124
+          </h2>
+
+          <span class="orders__order-date">
+            10 de septiembre, 2026
+          </span>
+
+        </div>
+
+
+        <span class="orders__status orders__status--preparing">
+          En preparación
+        </span>
+
+      </header>
+
+
+      <!-- PRODUCTOS -->
+
+      <div class="orders__products">
+
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="pandulce.png"
+              alt="Conchas tradicionales"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Conchas tradicionales
+            </h3>
+
+            <span>
+              2 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $56.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="cuernito.png"
+              alt="Cuernito clásico"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Cuernito clásico
+            </h3>
+
+            <span>
+              2 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $44.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="panque.png"
+              alt="Panqué de naranja"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Panqué de naranja
+            </h3>
+
+            <span>
+              1 pieza
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $35.00
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROGRESO -->
+
+      <div class="orders__tracking">
+
+        <div class="orders__tracking-header">
+
+          <span>
+            Estado del pedido
+          </span>
+
+          <strong>
+            Preparando tu pedido
+          </strong>
+
+        </div>
+
+
+        <div class="orders__progress">
+
+          <div class="orders__progress-line">
+
+            <div
+              class="orders__progress-fill orders__progress-fill--preparing"
+            ></div>
+
+          </div>
+
+
+          <div class="orders__steps">
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Confirmado
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--active">
+
+              <span class="orders__step-icon">
+                ●
+              </span>
+
+              <span>
+                Preparando
+              </span>
+
+            </div>
+
+
+            <div class="orders__step">
+
+              <span class="orders__step-icon">
+                3
+              </span>
+
+              <span>
+                En camino
+              </span>
+
+            </div>
+
+
+            <div class="orders__step">
+
+              <span class="orders__step-icon">
+                4
+              </span>
+
+              <span>
+                Entregado
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- FOOTER -->
+
+      <footer class="orders__card-footer">
+
+        <div class="orders__total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            $135.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__actions">
+
+          <button
+            type="button"
+            class="orders__button orders__button--secondary"
+          >
+            Ver detalle
+          </button>
+
+          <button
+            type="button"
+            class="orders__button orders__button--primary"
+          >
+            Volver a pedir
+          </button>
+
+        </div>
+
+      </footer>
+
+    </article>
+
+
+    <!-- ========================================
+         PEDIDO 2
+    ========================================= -->
+
+    <article class="orders__card">
+
+
+      <header class="orders__card-header">
+
+        <div class="orders__order-info">
+
+          <span class="orders__order-label">
+            Pedido
+          </span>
+
+          <h2 class="orders__order-number">
+            #123
+          </h2>
+
+          <span class="orders__order-date">
+            7 de septiembre, 2026
+          </span>
+
+        </div>
+
+
+        <span class="orders__status orders__status--shipping">
+          En camino
+        </span>
+
+      </header>
+
+
+      <div class="orders__products">
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="pan-chocolate.png"
+              alt="Pan de chocolate"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Pan de chocolate
+            </h3>
+
+            <span>
+              2 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $64.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="rol-canela.png"
+              alt="Rol de canela"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Rol de canela
+            </h3>
+
+            <span>
+              3 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $72.00
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="orders__tracking">
+
+        <div class="orders__tracking-header">
+
+          <span>
+            Estado del pedido
+          </span>
+
+          <strong>
+            Tu pedido está en camino
+          </strong>
+
+        </div>
+
+
+        <div class="orders__progress">
+
+          <div class="orders__progress-line">
+
+            <div
+              class="orders__progress-fill orders__progress-fill--shipping"
+            ></div>
+
+          </div>
+
+
+          <div class="orders__steps">
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Confirmado
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Preparando
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--active">
+
+              <span class="orders__step-icon">
+                ●
+              </span>
+
+              <span>
+                En camino
+              </span>
+
+            </div>
+
+
+            <div class="orders__step">
+
+              <span class="orders__step-icon">
+                4
+              </span>
+
+              <span>
+                Entregado
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <footer class="orders__card-footer">
+
+        <div class="orders__total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            $136.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__actions">
+
+          <button
+            type="button"
+            class="orders__button orders__button--secondary"
+          >
+            Ver detalle
+          </button>
+
+          <button
+            type="button"
+            class="orders__button orders__button--primary"
+          >
+            Volver a pedir
+          </button>
+
+        </div>
+
+      </footer>
+
+    </article>
+
+
+    <!-- ========================================
+         PEDIDO 3 — ENTREGADO
+    ========================================= -->
+
+    <article class="orders__card">
+
+
+      <header class="orders__card-header">
+
+        <div class="orders__order-info">
+
+          <span class="orders__order-label">
+            Pedido
+          </span>
+
+          <h2 class="orders__order-number">
+            #121
+          </h2>
+
+          <span class="orders__order-date">
+            2 de septiembre, 2026
+          </span>
+
+        </div>
+
+
+        <span class="orders__status orders__status--delivered">
+          Entregado
+        </span>
+
+      </header>
+
+
+      <div class="orders__products">
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="pandulce.png"
+              alt="Conchas tradicionales"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Conchas tradicionales
+            </h3>
+
+            <span>
+              4 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $112.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__product">
+
+          <div class="orders__product-image">
+
+            <img
+              src="empanada.png"
+              alt="Empanadas de cajeta"
+            >
+
+          </div>
+
+          <div class="orders__product-info">
+
+            <h3>
+              Empanadas de cajeta
+            </h3>
+
+            <span>
+              2 piezas
+            </span>
+
+          </div>
+
+          <strong class="orders__product-price">
+            $36.00
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="orders__tracking">
+
+        <div class="orders__tracking-header">
+
+          <span>
+            Estado del pedido
+          </span>
+
+          <strong>
+            Pedido entregado
+          </strong>
+
+        </div>
+
+
+        <div class="orders__progress">
+
+          <div class="orders__progress-line">
+
+            <div
+              class="orders__progress-fill orders__progress-fill--delivered"
+            ></div>
+
+          </div>
+
+
+          <div class="orders__steps">
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Confirmado
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Preparando
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                En camino
+              </span>
+
+            </div>
+
+
+            <div class="orders__step orders__step--completed">
+
+              <span class="orders__step-icon">
+                ✓
+              </span>
+
+              <span>
+                Entregado
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <footer class="orders__card-footer">
+
+        <div class="orders__total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            $148.00
+          </strong>
+
+        </div>
+
+
+        <div class="orders__actions">
+
+          <button
+            type="button"
+            class="orders__button orders__button--secondary"
+          >
+            Ver detalle
+          </button>
+
+          <button
+            type="button"
+            class="orders__button orders__button--primary"
+          >
+            Volver a pedir
+          </button>
+
+        </div>
+
+      </footer>
+
+    </article>
+
+
+  </section>
+
+
+  <!-- ==========================================
+       ESTADO VACÍO
+  =========================================== -->
+
+  <!--
+
+  <section class="orders__empty">
+
+    <div class="orders__empty-icon">
+      📦
+    </div>
+
+    <h2 class="orders__empty-title">
+      Aún no tienes pedidos
+    </h2>
+
+    <p class="orders__empty-description">
+      Cuando realices tu primera compra,
+      podrás consultar aquí todos tus pedidos.
+    </p>
+
+    <a
+      href="#"
+      class="button button--primary"
+    >
+      Ir a la tienda
+    </a>
+
+  </section>
+
+  -->
+
+</main>

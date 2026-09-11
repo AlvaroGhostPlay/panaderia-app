@@ -1,0 +1,105 @@
+@use "../base/variables" as v;
+@use "../base/mixins" as m;
+
+.product-title{
+  text-align: center;
+  color: v.$texto-cuarto;
+}
+
+.products{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .product-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente la imagen y el texto dentro de la card */
+    text-align: center;   /* Centra el texto de p */
+    &:hover {
+      .product-image {
+        &::before,
+        &::after {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .product-image {
+    position: relative; /* Indispensable para posicionar el overlay adentro */
+    background-image: url("/arte_login.jpg"); /* Ruta pública de Angular */
+    background-size: cover;
+    background-position: center;
+    height: 30rem;
+    width: 100%;
+    max-width: 20rem;
+    border-radius: 8px; /* Opcional: esquinas suavizadas */
+    overflow: hidden;    /* Evita que el fondo oscuro sobresalga de la imagen */
+
+    /* 1. Capa sombreada transparente */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.45); /* Color oscuro transparente */
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* 2. Texto / Botón "Ordenar" */
+    &::after {
+      content: "Ordenar"; /* Texto que deseas mostrar */
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffffff;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.6rem 1.4rem;
+      border: 2px solid #ffffff;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  }
+
+  .product-content{
+    margin-top: 1rem;
+    color: v.$texto-cuarto;
+  }
+}
+
+@include m.tablet{
+  .product-title{
+
+  }
+
+  .products{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include m.desktop{
+  .product-title{
+
+  }
+
+  .products{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

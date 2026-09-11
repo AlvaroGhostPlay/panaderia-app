@@ -2,12 +2,15 @@
 
 <nav class="contenedor">
   <div class="barra-contenido">
-    <p>logo</p>
+    <a routerLink="/home">
+      <img [src]="logo" alt="Logo" class="barra-logo">
+    </a>
   <ul class="barra-contenido__enlaces">
-    @for ( nadbar of nadbars ; track nadbar.id) {
-      <a class="barra-contenido__enlace">{{nadbar.title}}</a>
+    @for ( nadbar of nadbars ; track nadbar.idNadbar) {
+      <a class="barra-contenido__enlace" [routerLink]="nadbar.path">{{nadbar.title}}</a>
     }
   </ul>
+  @if (tipoNavbar === 'PUBLIC_HOME') {
     <ul class="barra-contenido__enlaces">
       <div class="barra-contenido__preordena">
         <div>
@@ -16,11 +19,27 @@
           </svg>
         </div>
         <div>
+
           <a>¡Ordena Ahora!</a>
         </div>
       </div>
-      <a class="barra-contenido__enlace">Iniciar Sesión</a>
+      <a class="barra-contenido__enlace" routerLink="/login" [queryParams]="{ action: 'login' }">Iniciar Sesión</a>
     </ul>
+  } @else if (tipoNavbar === 'USER_HOME'){
+    <ul class="barra-contenido__enlaces">
+      <div class="barra-contenido__preordena">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+          </svg>
+        </div>
+        <div>
+          <a>Carrito</a>
+        </div>
+      </div>
+      <a class="barra-contenido__enlace" routerLink="/login" [queryParams]="{ action: 'login' }">usuario</a>
+    </ul>
+  }
   </div>
 </nav>
 </div>

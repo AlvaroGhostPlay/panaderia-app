@@ -1,0 +1,501 @@
+<div class="store">
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <section class="store__hero">
+
+    <div class="store__hero-content">
+
+      <span class="store__hero-badge">
+        Nuestra panadería
+      </span>
+
+      <h1 class="store__hero-title">
+        Pan artesanal, sabor
+        <br>
+        que se siente en cada bocado
+      </h1>
+
+      <p class="store__hero-description">
+        Disfruta de nuestros productos frescos,
+        elaborados con ingredientes de la mejor calidad.
+      </p>
+
+      <button class="button button--primary">
+        Ver catálogo
+      </button>
+
+    </div>
+
+    <div class="store__hero-image">
+      <img
+        src=""
+        alt="Pan artesanal"
+      >
+    </div>
+
+  </section>
+
+
+  <!-- =========================================
+       CONTENIDO PRINCIPAL
+  ========================================== -->
+
+  <section class="store__layout">
+
+
+    <!-- =======================================
+         FILTROS
+    ======================================== -->
+
+    <aside class="store__filters">
+
+      <div class="store__filter-header">
+
+        <span class="store__filter-icon">
+          ◈
+        </span>
+
+        <h2 class="store__filter-title">
+          Categorías
+        </h2>
+
+      </div>
+
+
+      <nav class="store__categories">
+        @for (category of categories; track category.productCategoryId){
+            <button class="store__category" (click)="changeCategory(category.productCategoryId)">
+            <span class="store__category-icon">
+            ◉
+          </span>
+
+            <span class="store__category-name">
+            {{category.typeName}}
+          </span>
+            <span class="store__category-count">
+            48
+          </span>
+
+            </button>
+        }
+      </nav>
+
+
+      <!-- FILTROS -->
+
+      <div class="store__filter-section">
+
+        <div class="store__filter-header">
+
+          <span class="store__filter-icon">
+            ◇
+          </span>
+
+          <h2 class="store__filter-title">
+            Filtrar por
+          </h2>
+
+        </div>
+
+
+        <!-- PRECIO -->
+
+        <div class="store__filter-group">
+
+          <h3 class="store__filter-label">
+            Precio
+          </h3>
+
+          <div class="store__price-range">
+
+            <div class="store__range-line"></div>
+
+            <span class="store__range-point"></span>
+            <span class="store__range-point"></span>
+
+          </div>
+
+          <div class="store__price-values">
+            <span>$0</span>
+            <span>$100+</span>
+          </div>
+
+        </div>
+
+
+        <!-- DISPONIBILIDAD -->
+
+        <div class="store__filter-group">
+
+          <h3 class="store__filter-label">
+            Disponibilidad
+          </h3>
+
+          <label class="store__checkbox">
+
+            <input
+              type="checkbox"
+              checked
+            >
+
+            <span>
+              En existencia
+            </span>
+
+          </label>
+
+
+          <label class="store__checkbox">
+
+            <input type="checkbox">
+
+            <span>
+              Solo promociones
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =======================================
+         CATÁLOGO
+    ======================================== -->
+
+    <section class="store__catalog">
+
+      <header class="store__catalog-header">
+        <div>
+          <p>girar</p>
+          <select id="storeSort" class="store__sort" (change)="actualizarVariable($event)">
+            <option value="16">16</option>
+            <option value="32">32</option>
+          </select>
+        </div>
+          <div class="store__header--content">
+            <div class="store__catalog-title-wrapper">
+
+              <h2 class="store__catalog-title">
+                Pan dulce
+              </h2>
+
+            </div>
+
+            <p class="store__catalog-description">
+              El toque perfecto para cualquier momento.
+            </p>
+          </div>
+
+
+        <select class="store__sort">
+
+          <option>
+            Ordenar por
+          </option>
+
+          <option>
+            Más vendidos
+          </option>
+
+          <option>
+            Precio menor
+          </option>
+
+          <option>
+            Precio mayor
+          </option>
+
+          <option>
+            Más recientes
+          </option>
+
+        </select>
+
+      </header>
+
+
+      <!-- =====================================
+           PRODUCTOS
+      ====================================== -->
+
+      <div class="store__products">
+
+
+        <!-- PRODUCTO 1 -->
+        @for (product of products; track product.productId){
+          <article class="store__product">
+
+            <div class="store__product-image">
+
+              <button
+                class="store__favorite"
+                type="button"
+                aria-label="Agregar a favoritos"
+              >
+                ♡
+              </button>
+
+              <img
+                [src]="'data:image/png;base64,' + product.imageUrl"
+                alt="Conchas tradicionales"
+              >
+
+            </div>
+
+            <div class="store__product-info">
+
+              <h3 class="store__product-name">
+                {{product.productName}}
+              </h3>
+
+              <p class="store__product-description">
+                {{product.productName}}
+              </p>
+
+              <div class="store__product-footer">
+
+                <strong class="store__product-price">
+                  Q.{{product.price}}
+                </strong>
+
+                <button
+                  class="store__add-cart"
+                  type="button"
+                  aria-label="Agregar al carrito"
+                >
+                  🛒
+                </button>
+
+              </div>
+
+            </div>
+          </article>
+        }
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================
+         CARRITO
+    ======================================== -->
+
+    <aside class="store__cart">
+
+      <header class="store__cart-header">
+
+        <span class="store__cart-icon">
+          🛒
+        </span>
+
+        <h2 class="store__cart-title">
+          Tu carrito
+        </h2>
+
+        <span class="store__cart-count">
+          3
+        </span>
+
+      </header>
+
+
+      <div class="store__cart-products">
+
+
+        <!-- ITEM CARRITO -->
+
+        <article class="store__cart-item">
+
+          <img
+            src="pandulce.png"
+            alt=""
+            class="store__cart-image"
+          >
+
+          <div class="store__cart-info">
+
+            <h3>
+              Conchas tradicionales
+            </h3>
+
+            <strong>
+              $28.00
+            </strong>
+
+            <div class="store__quantity">
+
+              <button>
+                −
+              </button>
+
+              <span>
+                1
+              </span>
+
+              <button>
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <button
+            class="store__cart-remove"
+            aria-label="Eliminar producto"
+          >
+            ♡
+          </button>
+
+        </article>
+
+
+        <article class="store__cart-item">
+
+          <img
+            src=""
+            alt=""
+            class="store__cart-image"
+          >
+
+          <div class="store__cart-info">
+
+            <h3>
+              Cuernito clásico
+            </h3>
+
+            <strong>
+              $22.00
+            </strong>
+
+            <div class="store__quantity">
+
+              <button>
+                −
+              </button>
+
+              <span>
+                1
+              </span>
+
+              <button>
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <button class="store__cart-remove">
+            ♡
+          </button>
+
+        </article>
+
+
+        <article class="store__cart-item">
+
+          <img
+            src=""
+            alt=""
+            class="store__cart-image"
+          >
+
+          <div class="store__cart-info">
+
+            <h3>
+              Panqué de naranja
+            </h3>
+
+            <strong>
+              $35.00
+            </strong>
+
+            <div class="store__quantity">
+
+              <button>
+                −
+              </button>
+
+              <span>
+                1
+              </span>
+
+              <button>
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+          <button class="store__cart-remove">
+            ♡
+          </button>
+
+        </article>
+
+      </div>
+
+
+      <!-- TOTALES -->
+
+      <div class="store__cart-summary">
+
+        <div class="store__cart-row">
+
+          <span>
+            Subtotal
+          </span>
+
+          <strong>
+            $85.00
+          </strong>
+
+        </div>
+
+
+        <div class="store__cart-row">
+
+          <span>
+            Envío
+          </span>
+
+          <strong>
+            $0.00
+          </strong>
+
+        </div>
+
+
+        <div class="store__cart-total">
+
+          <span>
+            Total
+          </span>
+
+          <strong>
+            $85.00
+          </strong>
+
+        </div>
+
+      </div>
+      <button class="store__checkout button button--primary">
+        Continuar con la compra
+        <span>
+          →
+        </span>
+      </button>
+    </aside>
+  </section>
+</div>

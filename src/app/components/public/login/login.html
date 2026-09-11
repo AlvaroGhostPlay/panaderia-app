@@ -1,0 +1,220 @@
+<div class="login-page">
+
+  <div class="login-card">
+    <div
+      class="panels"
+      [class.login-active]="loginActive">
+
+      <div class="view-container">
+        <!-- IZQUIERDA -->
+        <section class="register-panel">
+
+          <div class="panel-content">
+            <div>
+              <h1 class="login-title">¡Únete a la familia<br>Dulce Hogar!</h1>
+            </div>
+
+            <form>
+
+              <div class="input-row">
+                <input
+                  type="text"
+                  placeholder="Nombres"
+                  class="input"
+                />
+
+                <input
+                  type="text"
+                  placeholder="Apellidos"
+                  class="input"
+                />
+              </div>
+
+              <input
+                type="email"
+                placeholder="Correo Electrónico"
+                class="input"
+              />
+
+              <div class="input-row">
+                <input
+                  type="password"
+                  placeholder="Contraseña"
+                  class="input"
+                />
+                <input
+                  type="password"
+                  placeholder="Confirmar Contraseña"
+                  class="input"
+                />
+              </div>
+
+              <div class="input-row">
+                <input
+                  class="input"
+                  type="number"
+                  min="0"
+                  placeholder="Número"
+                />
+
+                <input
+                  class="input"
+                  type="date"
+                />
+              </div>
+
+              <div class="checkbox">
+                <label >
+                  <input type="checkbox">
+                </label>
+                <span>Deseo recibir ofertas y noticias exclusivas</span>
+              </div>
+
+              <div class="social-row">
+
+                <button type="button" class="button button-redes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                    <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                  </svg>
+                  Registrarse con Google
+                </button>
+
+                <button type="button" class="button button-redes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                  </svg>
+                  Registrarse con Facebook
+                </button>
+
+              </div>
+
+              <button
+                type="submit"
+                class="button primary-button"
+              >
+                Registrarse
+              </button>
+
+            </form>
+
+          </div>
+
+        </section>
+
+
+        <!-- DERECHA -->
+        <section class="login-panel">
+          <div class="panel-content">
+
+            <h2 class="title__login">
+              Hola, ¿Ya tienes<br>
+              una cuenta?
+            </h2>
+
+            <p class="login_message">
+              Inicia sesión para seguir disfrutando de nuestros productos, servicios, las ofertas especiales y atención especializada. No olvides que algo aqui
+            </p>
+
+            <button
+              type="button"
+              class="button seccond-button"
+              (click)="togglePanel()"
+            >
+              Iniciar Sesión
+            </button>
+
+          </div>
+
+        </section>
+      </div>
+
+      <div class="view-container">
+        <!-- DERECHA -->
+        <section class="login-panel">
+          <div class="panel-content">
+
+            <h2 class="title__login">
+              Hola, ¿Aún no tienes<br>
+              una cuenta?
+            </h2>
+
+            <p class="login_message">
+              Ven registrate para descubrir nuestros
+              productos exclusivos, recibir ofertas
+              especiales y disfrutar de la dulzura de la vida.
+            </p>
+
+            <button
+              type="button"
+              class="button seccond-button"
+              (click)="togglePanel()"
+            >
+              Registrate
+            </button>
+
+          </div>
+
+        </section>
+        <!-- IZQUIERDA -->
+        <section class="register-panel">
+
+          <div class="panel-content">
+            <div>
+              <h1 class="login-title">¡Ven aquí está tu<br>Dulce Hogar!</h1>
+            </div>
+
+            <form (ngSubmit)="login()">
+
+              <input
+                type="text"
+                name="usuario"
+                placeholder="Usuario"
+                class="input"
+                [(ngModel)]="loginRequest.username"
+                required
+              />
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                [(ngModel)]="loginRequest.password"
+                required
+                class="input" />
+
+              <div class="social-row">
+
+                <button type="button" class="button button-redes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                    <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+                  </svg>
+                  Iniciar con Google
+                </button>
+
+                <button type="button" class="button button-redes">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                  </svg>
+                  Iniciar con Facebook
+                </button>
+
+              </div>
+
+              <button
+                type="submit"
+                class="button primary-button"
+              >
+                Iniciar Sesión
+              </button>
+
+            </form>
+
+          </div>
+
+        </section>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -2,7 +2,12 @@
 @use '../base/mixins' as m;
 
 .header{
-  background-color: v.$secundario;
+  background-color: v.$septimo;
+}
+
+.barra-logo{
+  width: 30rem;
+  height: 100%
 }
 
 .barra-contenido__enlaces{

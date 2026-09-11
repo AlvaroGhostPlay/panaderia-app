@@ -1,0 +1,397 @@
+@use "../base/variables" as v;
+
+.dashboard {
+
+  // =========================================
+  // REUTILIZABLES
+  // =========================================
+
+  &__card--header{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__card--iconPlace{
+    background-color: v.$primario;
+    padding: 1rem;
+    border-radius: 50%;
+  }
+
+  &__card--icon{
+    color: v.$secundario;
+    height: 100%;
+    width: 4.5rem;
+  }
+
+  &__card--title{
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  &__card--body {
+    /*
+     * Ocupa todo el espacio que queda
+     * debajo del título.
+     */
+    flex: 1;
+
+    /*
+     * AQUÍ ESTÁ EL CENTRADO VERTICAL
+     */
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    background-color: v.$decimo;
+    border-radius: 0.5rem;
+    box-shadow:
+      10px 10px 20px 5px rgba(0, 0, 0, 0.09);
+
+    /*
+     * Permite que el contenido interno
+     * utilice todo el espacio disponible.
+     */
+    min-height: 100%;
+  }
+
+  &__card-title {
+    margin: 0 0 1rem;
+
+    text-align: center;
+
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__card-description {
+    margin: 0 0 2rem;
+  }
+
+  // =========================================
+  // HERO
+  // =========================================
+
+  &__hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__hero-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &__hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -100%);
+
+    width: 60%;
+
+    text-align: center;
+    z-index: 2;
+
+    .dashboard__hero-offer{
+      margin-top: 2rem;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__hero-title {
+    margin: 1rem 0 0;
+    color: v.$texto-cuarto;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+
+
+  // =========================================
+  // CARDS
+  // =========================================
+
+  &__cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 2rem;
+
+    margin-top: 5rem;
+
+    /*
+     * MUY IMPORTANTE
+     *
+     * Grid hace que las tres tarjetas ocupen
+     * la altura de la tarjeta más alta.
+     */
+    align-items: stretch;
+  }
+
+  // =========================================
+  // REORDER
+  // =========================================
+
+  &__card--reorder {
+
+    .dashboard__product {
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      align-items: center;
+      justify-items: center;
+
+      gap: 2rem;
+
+      margin-bottom: 2rem;
+    }
+
+    .dashboard__product-image {
+      width: 100%;
+      max-width: 180px;
+
+      height: auto;
+      object-fit: contain;
+    }
+
+    .button--primary {
+      margin: 0;
+      padding: 1.5rem;
+      font-size: 1.7rem;
+    }
+  }
+
+
+  // =========================================
+  // FAVORITES
+  // =========================================
+
+  &__favorites {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+
+  &__favorite {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background-color: v.$noveno;
+
+    padding: 0.5rem;
+
+    img {
+      width: 100%;
+      max-width: 100px;
+
+      height: auto;
+
+      object-fit: contain;
+    }
+
+    p {
+      margin: 0.5rem 0 0;
+      font-size: 1.3rem;
+    }
+  }
+
+
+  // =========================================
+  // ORDERS
+  // =========================================
+
+  &__order {
+    margin-bottom: 2rem;
+  }
+
+  &__order-number {
+    margin: 0 0 1rem;
+  }
+
+  &__order-actions {
+    display: flex;
+
+    gap: 2rem;
+  }
+
+  &__card--orders {
+
+    .button--primary {
+      flex: 1;
+
+      margin: 0;
+
+      padding: 1.5rem;
+
+      font-size: 1.7rem;
+    }
+
+    .button--secondary {
+      flex: 1;
+      background-color: v.$octavo;
+      margin: 0;
+      box-shadow: 0 0 0 2px v.$octavo;
+      padding: 1.5rem;
+      font-size: 1.7rem;
+      color: v.$texto-terceario;
+      &:hover {
+        background: transparent;
+        color: v.$octavo;
+      }
+    }
+  }
+
+  // =========================================
+  // POINTS
+  // =========================================
+
+  &__point--description{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    justify-content: space-around;
+  }
+
+  &__point--line {
+    grid-column: 1 / -1;
+  }
+
+  &__point--reward{
+    padding: 2rem 1.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    grid-column: 1 / -1;
+  }
+
+
+  // =========================================
+  // POINTS
+  // =========================================
+  &__offer--content{
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  &__offer--title2{
+   margin: 1.5rem 0 0 0;
+  }
+
+  &__offer--description{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  &__offer--enlace{
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: v.$primario;
+    text-decoration: underline;
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__offer--offer{
+    background-color: v.$secundario;
+    border-radius: .5rem;
+    padding: 0.5rem;
+
+    .button--primary{
+      padding: 1.5rem 3.7rem;
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // =========================================
+  // ENVIO
+  // =========================================
+
+  &__send--content{
+    background-color: v.$secundario;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  &__send--lineTime{
+    grid-column: 1 / -1;
+  }
+
+  &__send--information{
+    grid-column: 1 / -1;
+  }
+
+  &__send__button{
+    grid-column: 1 / -1;
+  }
+
+  &carrusel{
+   background-color: v.$decimo;
+  }
+
+  // =========================================
+  // CARRUSEL
+  // =========================================
+
+  &__carrusel{
+    margin-top: 6rem;
+    background-color: v.$decimo;
+    border-radius: 0.5rem;
+    box-shadow:
+      10px 10px 20px 5px rgba(0, 0, 0, 0.09);
+    padding: 3rem 1.5rem;
+  }
+
+  &__carrusel--contendedor{
+    margin-top: 2rem;
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__carrusel--item{
+    background-color: v.$secundario;
+    padding: 1rem;
+  }
+
+  // =========================================
+  // ACCIONES RAPIDAS
+  // =========================================
+
+  &__actions{
+    margin-top: 6rem;
+    padding: 3rem 1.5rem;
+    background-color: v.$decimo;
+    border-radius: 0.5rem;
+    box-shadow:
+      10px 10px 20px 5px rgba(0, 0, 0, 0.09);
+  }
+
+  &__acctions--contenedor{
+    display: flex;
+    border-radius: 0.5rem;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+}

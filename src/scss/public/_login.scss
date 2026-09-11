@@ -1,0 +1,222 @@
+@use "../base/variables" as v;
+
+/* CONTENEDOR DE TODA LA PANTALLA */
+.login-page {
+  width: 100%;
+  min-height: 105rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+
+/* TARJETA PRINCIPAL */
+.login-card {
+  width: 100%;
+  max-width: 120rem;
+  min-height: 75rem;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.panels {
+  display: flex;
+  width: 200%; /* Ocupa el doble del espacio (Vista 1 + Vista 2) */
+  height: 100%;
+  transform: translateX(0); /* Estado inicial (Viendo el registro) */
+  transition: transform 0.6s ease-in-out; /* Animación fluida */
+}
+
+.panels.login-active {
+  transform: translateX(-50%); /* Desplaza el lienzo a la mitad, mostrando el Login */
+}
+
+.view-container {
+  width: 50%; /* Cada vista ocupa la mitad del lienzo del 200% (es decir, el 100% de login-card) */
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Aquí es donde definimos las 2 columnas */
+  align-items: stretch;
+}
+
+/* PANELES */
+
+.register-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.register-panel,
+.login-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 1rem 0;
+
+  flex-shrink: 0;
+}
+
+/* SOLAMENTE LA IMAGEN */
+.login-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../public/arte_login.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: .8;
+  z-index: 0;
+  border-radius: 1.5rem;
+}
+
+
+/*
+ * El contenido interno no ocupa
+ * innecesariamente todo el ancho.
+ */
+.panel-content {
+  width: 85%;
+  max-width: 52rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+}
+
+.imagen{
+  width: 25rem;
+  height: auto;
+}
+
+.login-title {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0;
+  color: v.$texto-cuarto;
+  text-align: center;
+  margin: 0 0 1.2rem 0;
+}
+
+.login-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../../public/arte2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* CHECKBOX */
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkbox{
+  margin-top: 2rem;
+}
+.checkbox input {
+  width: auto;
+}
+
+
+/* REDES SOCIALES */
+.social-row {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.button-redes {
+  display: flex;
+  justify-content: center; /* Centra el bloque de contenido horizontalmente */
+  align-items: center;     /* Centra el bloque de contenido verticalmente */
+  gap: 1rem;               /* Mantiene el espacio exacto entre SVG y span */
+
+  width: 100%;             /* VITAL: Permite que el botón se expanda y note el centrado */
+  padding: 1rem;
+  font-size: 1.6rem;
+  background-color: v.$sexto;
+  color: v.$tercero;
+  border: none;            /* Asegura que no haya bordes nativos interfiriendo */
+  cursor: pointer;
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    min-width: 1.6rem;
+    min-height: 1.6rem;
+    color: v.$cuarto;
+  }
+}
+
+
+/* BOTÓN */
+.primary-button {
+  width: 100%;
+  color: v.$secundario;
+  transition: transform 0.3s ease;
+  border: none;
+  background-color: v.$primario;
+  font-weight: bold;
+  font-size: 3rem;
+  &:hover{
+    background-color: transparent;
+    color: v.$primario;
+    box-shadow: 0 0 0 2px v.$primario;
+    transform: scale(1.05);
+  }
+}
+
+/* BOTÓN */
+.seccond-button {
+  margin-top: 2rem;
+  width: 100%;
+  color: v.$secundario;
+  transition: transform 0.3s ease;
+  border: none;
+  background-color: v.$cuarto;
+  font-weight: bold;
+  font-size: 3rem;
+  &:hover{
+    background-color: v.$secundario;
+    color: v.$cuarto;
+    box-shadow: 0 0 0 2px v.$cuarto;
+    transform: scale(1.05);
+  }
+}
+
+.title__login{
+  text-align: center;
+  color: v.$sexto;
+}
+
+.login_message{
+  text-align: center;
+  color: v.$secundario;
+  font-size: 1.6rem;
+}
+
+.footer.toggle-panel {
+  margin: 0;
+}

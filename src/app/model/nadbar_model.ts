@@ -1,6 +1,11 @@
-export class NadbarModel{
-  id!: number;
+export class NadbarModel {
+  idNadbar!: number;
   title!: string;
-  description!: string;
-  url!: string;
+  path!: string;
+  TypeNadbar!: TypeNadbar;
+}
+
+export class TypeNadbar {
+  idTypeNadbar!: number;
+  typeNadbar!: string;
 }

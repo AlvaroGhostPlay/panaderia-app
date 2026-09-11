@@ -33,6 +33,7 @@ p {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 h1, h2, h3 {
   margin: 0 0 5rem 0;
@@ -40,6 +41,7 @@ h1, h2, h3 {
 }
 h1 {
   font-size: 4rem;
+  margin-top: 2rem;
 }
 h2 {
   font-size: 3.6rem;
@@ -58,7 +60,18 @@ body > section {
   padding: 10rem 0
 }
 
-button{
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+li{
+  list-style: none;
+}
+
+.button{
   border-radius: 2rem;
   border: none;
   cursor: pointer;
@@ -66,8 +79,55 @@ button{
   padding: 1.5rem;
 }
 
-.icon-color{
+.icon-refactor{
   fill: none;             /* Quita el relleno negro original */
   stroke: currentColor;   /* El color de la línea se adapta al texto que lo rodea */
   stroke-width: 1.2px;
+}
+
+.icon-refactor2{
+  text-align: center;
+}
+
+.iscon-color--primary{
+  color: v.$tercero
+}
+
+.iscon-color--secundary{
+  color: v.$cuarto
+}
+
+.input-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  border: .1rem solid v.$tercero;
+  border-radius: 0.5rem;
+  color: v.$tercero;
+  opacity: 1;
+  margin-top: 2rem;
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
+  &:focus{
+    border: .1rem solid v.$cuarto;
+  }
+  &::placeholder {
+    opacity: 1;
+    color: v.$tercero;
+  }
 }
