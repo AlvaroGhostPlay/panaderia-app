@@ -17,4 +17,5 @@ export class Cart{
 export class ProductCategory {
   productCategoryId!: string;
   typeName!: string;
+  productCount!: number;
 }

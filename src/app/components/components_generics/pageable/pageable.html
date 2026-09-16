@@ -1,0 +1,25 @@
+<div class="pageable">
+  @if (currentPage() > 0) {
+    <button (click)="firstPage()">
+      <<
+    </button>
+
+    <button (click)="previousPage()">
+      <
+    </button>
+  }
+
+  <span>
+    Página {{ currentPage() + 1 }} de {{ totalPages() }}
+  </span>
+
+  @if (currentPage() < totalPages() - 1) {
+    <button (click)="nextPage()">
+      >
+    </button>
+
+    <button (click)="lastPage()">
+      >>
+    </button>
+  }
+</div>

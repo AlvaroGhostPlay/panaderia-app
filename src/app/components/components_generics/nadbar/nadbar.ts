@@ -14,8 +14,8 @@ import { AuthstateService } from '../../../services/authstate.service';
 export class Nadbar implements OnInit {
   nadbars: NadbarModel[] = [];
   logo!: string;
-  tipo = input<string>('PUBLIC_HOME');
-  tipoNavbar = 'PUBLIC_HOME';
+  tipo = input<string>('PUBLIC_NADBAR');
+  tipoNavbar = 'PUBLIC_NADBAR';
 
   constructor(
     private nadbarService: NadbarService,

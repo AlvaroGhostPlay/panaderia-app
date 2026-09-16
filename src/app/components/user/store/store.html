@@ -67,7 +67,7 @@
 
       <nav class="store__categories">
         @for (category of categories; track category.productCategoryId){
-            <button class="store__category" (click)="changeCategory(category.productCategoryId)">
+            <button class="store__category" (click)="changeCategory(category)">
             <span class="store__category-icon">
             ◉
           </span>
@@ -76,7 +76,7 @@
             {{category.typeName}}
           </span>
             <span class="store__category-count">
-            48
+            {{category.productCount}}
           </span>
 
             </button>
@@ -183,7 +183,7 @@
             <div class="store__catalog-title-wrapper">
 
               <h2 class="store__catalog-title">
-                Pan dulce
+                {{categoryTitle}}
               </h2>
 
             </div>
@@ -281,6 +281,7 @@
 
 
       </div>
+      <pageable [currentPage]="currentPage"] [totalPages]="totalPages"] (pageChange)="changePage($event)"/>
 
     </section>
 
@@ -288,7 +289,7 @@
     <!-- =======================================
          CARRITO
     ======================================== -->
-
+    @if (mostrarCart === true) {
     <aside class="store__cart">
 
       <header class="store__cart-header">
@@ -497,5 +498,19 @@
         </span>
       </button>
     </aside>
+    } @else {
+      <aside class="store__cart">
+        <header class="store__cart-header">
+
+        <span class="store__cart-icon">
+          🛒
+        </span>
+
+          <h2 class="store__cart-title">
+            ¡Añade Productos al Carrito!
+          </h2>
+        </header>
+      </aside>
+    }
   </section>
 </div>
