@@ -269,6 +269,7 @@
                   class="store__add-cart"
                   type="button"
                   aria-label="Agregar al carrito"
+                  (click)="addCart(product)"
                 >
                   🛒
                 </button>
@@ -303,7 +304,7 @@
         </h2>
 
         <span class="store__cart-count">
-          3
+          {{cart.totalItems}}
         </span>
 
       </header>
@@ -313,11 +314,11 @@
 
 
         <!-- ITEM CARRITO -->
-
+        @for (cartItem of cart.cartDetailResponseDto; track cartItem.cartDetailId){
         <article class="store__cart-item">
 
           <img
-            src="pandulce.png"
+            [src]="'data:image/png;base64,' + cartItem.product.imageUrl"
             alt=""
             class="store__cart-image"
           >
@@ -325,11 +326,10 @@
           <div class="store__cart-info">
 
             <h3>
-              Conchas tradicionales
+              {{cartItem.product.productName}}
             </h3>
 
             <strong>
-              $28.00
             </strong>
 
             <div class="store__quantity">
@@ -339,10 +339,10 @@
               </button>
 
               <span>
-                1
+                {{cartItem.quantity}}
               </span>
 
-              <button>
+              <button (click)="additem(cartItem.cartDetailId)">
                 +
               </button>
 
@@ -358,96 +358,8 @@
           </button>
 
         </article>
-
-
-        <article class="store__cart-item">
-
-          <img
-            src=""
-            alt=""
-            class="store__cart-image"
-          >
-
-          <div class="store__cart-info">
-
-            <h3>
-              Cuernito clásico
-            </h3>
-
-            <strong>
-              $22.00
-            </strong>
-
-            <div class="store__quantity">
-
-              <button>
-                −
-              </button>
-
-              <span>
-                1
-              </span>
-
-              <button>
-                +
-              </button>
-
-            </div>
-
-          </div>
-
-          <button class="store__cart-remove">
-            ♡
-          </button>
-
-        </article>
-
-
-        <article class="store__cart-item">
-
-          <img
-            src=""
-            alt=""
-            class="store__cart-image"
-          >
-
-          <div class="store__cart-info">
-
-            <h3>
-              Panqué de naranja
-            </h3>
-
-            <strong>
-              $35.00
-            </strong>
-
-            <div class="store__quantity">
-
-              <button>
-                −
-              </button>
-
-              <span>
-                1
-              </span>
-
-              <button>
-                +
-              </button>
-
-            </div>
-
-          </div>
-
-          <button class="store__cart-remove">
-            ♡
-          </button>
-
-        </article>
-
-      </div>
-
-
+          }
+        </div>
       <!-- TOTALES -->
 
       <div class="store__cart-summary">

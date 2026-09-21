@@ -31,26 +31,30 @@ export class Rollback {
           roles: response.roles ?? [],
         };
 
-        // Guardamos el usuario en memoria
         this.authState.setUser(user, response.authenticated);
 
-        console.log('Usuario autenticado:', user);
-        console.log('Roles:', user.roles);
+        this.authService.csrf().subscribe({
+          next: () => {
+            console.log('CSRF generado:', document.cookie);
 
-        if (user.roles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['/admin/dashboard']);
-        } else if (user.roles.includes('ROLE_USER')) {
-          this.router.navigate(['/app']);
-        } else {
-          this.router.navigate(['/home']);
-        }
+            if (user.roles.includes('ROLE_ADMIN')) {
+              this.router.navigate(['/admin/dashboard']);
+            } else if (user.roles.includes('ROLE_USER')) {
+              this.router.navigate(['/app']);
+            } else {
+              this.router.navigate(['/home']);
+            }
+          },
+          error: (error) => {
+            console.error('Error generando CSRF:', error);
+          },
+        });
       },
 
       error: (error) => {
         console.error('Error obteniendo /bff/me:', error);
 
         this.authState.clearUser();
-
         this.router.navigate(['/login']);
       },
     });

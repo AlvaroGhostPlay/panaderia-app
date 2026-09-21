@@ -2,6 +2,7 @@ import { inject, Service } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product, ProductCategory } from '../model/product.model';
+import { Cart } from '../model/Cart';
 
 @Service()
 export class ProductService {
@@ -10,7 +11,7 @@ export class ProductService {
 
   private http = inject(HttpClient);
 
-  getProductsStore(page: string, cantidad:string, categoria: string): Observable<any> {
+  getProductsStore(page: string, cantidad: string, categoria: string): Observable<any> {
     const params = new HttpParams()
       .set('page', page)
       .set('cantidad', cantidad)
@@ -21,12 +22,9 @@ export class ProductService {
     });
   }
 
-  getAllProductCategories(): Observable<ProductCategory[]>{
-    return this.http.get<ProductCategory[]>(
-      `${this.url}${this.path}/category/private`,
-      {
-        withCredentials: true,
-      },
-    );
+  getAllProductCategories(): Observable<ProductCategory[]> {
+    return this.http.get<ProductCategory[]>(`${this.url}${this.path}/category/private`, {
+      withCredentials: true,
+    });
   }
 }

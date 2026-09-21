@@ -6,7 +6,7 @@ export class Cart {
   state!: boolean;
   updated!: Date;
   totalItems!: number;
-  cartItems!: CartItem[];
+  cartDetailResponseDto!: CartItem[];
 }
 
 export class CartItem {

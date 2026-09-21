@@ -35,18 +35,15 @@ export class Login implements OnInit, OnDestroy {
   }
 
   login(): void {
-    console.log(this.loginRequest);
-        this.authService.login(this.loginRequest).subscribe({
-          next: (response) => {
-            console.log('Login exitoso:', response);
-            window.location.href =
-              'http://panaderia.test:8080/oauth2/authorization/bff';
-          },
-          error: (error) => {
-            console.error('Error en login:', error);
-          },
-        });
-      }
+    this.authService.login(this.loginRequest).subscribe({
+      next: () => {
+        window.location.href = 'http://panaderia.test:8080/oauth2/authorization/bff';
+      },
+      error: (error) => {
+        console.error('Error en login:', error);
+      },
+    });
+  }
 
   // Cambia el estado de la clase
   togglePanel() {

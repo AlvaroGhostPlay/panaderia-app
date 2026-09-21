@@ -38,14 +38,13 @@ export interface MeResponse {
 export class AuthService {
   private http = inject(HttpClient);
   private readonly apiUrl = 'http://panaderia.test:8080';
-  private readonly apiUrl2 = 'http://panaderia.test:9000';
 
   login(request: LoginRequest): Observable<LoginResponse> {
     const headers = new HttpHeaders({
       ['Content-Type']: 'application/json',
     });
 
-    return this.http.post<LoginResponse>(`${this.apiUrl2}/api/auth/login`, request, {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/api/auth/login`, request, {
       headers,
       withCredentials: true,
     });
@@ -58,7 +57,7 @@ export class AuthService {
   }
 
   csrf(): Observable<CsrfToken> {
-    return this.http.get<CsrfToken>(`${this.apiUrl2}/api/auth/csrf`, {
+    return this.http.get<CsrfToken>(`${this.apiUrl}/bff/csrf`, {
       withCredentials: true,
     });
   }

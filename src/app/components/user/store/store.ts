@@ -6,6 +6,7 @@ import { Cart } from '../../../model/Cart';
 import { AuthService } from '../../../services/auth.service';
 import { PaymmentService } from '../../../services/paymment.service';
 import { AuthstateService } from '../../../services/authstate.service';
+import { Products } from '../../public/products/products';
 
 @Component({
   imports: [Pageable],
@@ -21,7 +22,7 @@ export class Store {
   totalPages = 0;
   categoryTitle = 'Pan Dulce';
   cart: Cart = new Cart();
-  userId: string | undefined = '';
+  userId: string = '';
   mostrarCart: boolean = false;
 
   constructor(
@@ -32,7 +33,7 @@ export class Store {
   ) {}
 
   ngOnInit() {
-    this.userId = this.authService.user?.username;
+    this.userId = <string>this.authService.user?.username;
     this.findAllCategories();
     console.log(this.cantidad);
     console.log(this.productCategory);
@@ -44,7 +45,9 @@ export class Store {
     if (typeof userId === 'string') {
       this.paymmentService.getCart(userId).subscribe({
         next: (data) => {
+          console.log(data);
           this.cart = data;
+          this.mostrarCart = true;
           this.cdr.detectChanges();
         },
         error: (err) => {
@@ -64,8 +67,6 @@ export class Store {
     this.productCategory = category.productCategoryId;
     this.categoryTitle = category.typeName;
     this.currentPage = 0;
-    console.log(this.productCategory);
-    console.log(this.currentPage.toString());
     this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
     this.cdr.detectChanges();
   }
@@ -80,41 +81,29 @@ export class Store {
   }
 
   findAllProductCategories(productCategory: string, cantidad: string, pagina: string): void {
-    console.log('1. Entró a findAllProductCategories');
-    console.log('Parámetros:', productCategory, cantidad, pagina);
 
     this.productService.getProductsStore(pagina, cantidad, productCategory).subscribe({
       next: (page: any) => {
-        console.log('2. RESPUESTA PRODUCTS:', page);
 
         this.products = page.content ?? [];
         this.currentPage = page.number ?? 0;
         this.totalPages = page.totalPages ?? 0;
-
-        console.log(this.products);
-
         this.cdr.detectChanges();
       },
 
       error: (err) => {
-        console.error('2. ERROR PRODUCTS:', err);
-
         this.products = [];
         this.currentPage = 0;
         this.totalPages = 0;
-
         this.cdr.detectChanges();
-      },
-
-      complete: () => {
-        console.log('3. Petición completada');
-      },
+      }
     });
   }
 
   actualizarVariable(event: Event): void {
     const combo = event.target as HTMLSelectElement;
     this.cantidad = combo.value;
+    this.currentPage = 0;
     this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
   }
 
@@ -123,7 +112,17 @@ export class Store {
     this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
   }
 
-  addCart(): void {}
+  addCart(product:Product): void {
+    this.paymmentService.createCartOrAddCartDetail(product.productId, this.userId).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.cart = data;
+        this.cdr.detectChanges();
+      }
+    });
+  }
 
-  removeCart(): void {}
+  additem(itemId:string): void {
+
+  }
 }

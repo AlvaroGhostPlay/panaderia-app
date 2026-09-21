@@ -1,8 +1,22 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-
 import { provideRouter } from '@angular/router';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+
 import { routes } from './app.routes';
+import { CsrfInterceptor } from './interceptors/csrf.interceptor';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideBrowserGlobalErrorListeners(), provideRouter(routes)],
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+
+    provideRouter(routes),
+
+    provideHttpClient(withInterceptorsFromDi()),
+
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CsrfInterceptor,
+      multi: true,
+    },
+  ],
 };
