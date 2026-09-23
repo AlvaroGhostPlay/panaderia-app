@@ -14,4 +14,10 @@ export class CartItem {
   product!: Product;
   quantity!: number;
   updated!: Date;
+  favorite!: boolean;
+}
+
+export class UpdateCartDetail {
+  cartDetailAcction!: string;
+  cartDetailId!: string;
 }

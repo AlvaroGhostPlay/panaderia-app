@@ -5,6 +5,7 @@ export class Product {
   imageUrl!: string;
   offer!: boolean;
   productCategory!: ProductCategory[];
+  favorite!: boolean;
 }
 
 export class Cart{

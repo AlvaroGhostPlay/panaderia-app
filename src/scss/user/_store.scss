@@ -613,8 +613,7 @@
 
     background-color: rgba(255, 255, 255, .9);
 
-    color: v.$secundario;
-
+    color: v.$undecimo;
     font-size: 2.2rem;
 
     cursor: pointer;
@@ -624,11 +623,22 @@
 
     &:hover {
 
-      background-color: v.$secundario;
-
       color: white;
 
       transform: scale(1.08);
+    }
+  }
+  &__favorite--fav{
+    color: v.$undecimo;
+    &:hover{
+      background-color: v.$secundario;
+    }
+  }
+
+  &__favorite--nofav{
+    color: v.$secundario;
+    &:hover{
+      background-color: v.$undecimo;
     }
   }
 

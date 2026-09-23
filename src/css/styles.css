@@ -1881,15 +1881,26 @@ li {
   border: 0;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.9);
-  color: #f3efe3;
+  color: #FF2C00;
   font-size: 2.2rem;
   cursor: pointer;
   transition: 0.2s ease;
 }
 .store__favorite:hover {
-  background-color: #f3efe3;
   color: white;
   transform: scale(1.08);
+}
+.store__favorite--fav {
+  color: #FF2C00;
+}
+.store__favorite--fav:hover {
+  background-color: #f3efe3;
+}
+.store__favorite--nofav {
+  color: #f3efe3;
+}
+.store__favorite--nofav:hover {
+  background-color: #FF2C00;
 }
 .store__product-info {
   padding: 1.2rem;

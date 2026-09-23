@@ -11,12 +11,14 @@ export class ProductService {
 
   private http = inject(HttpClient);
 
-  getProductsStore(page: string, cantidad: string, categoria: string): Observable<any> {
+  getProductsStore(page: string, cantidad: string, categoria: string, userId:string): Observable<any> {
     const params = new HttpParams()
       .set('page', page)
       .set('cantidad', cantidad)
-      .set('categoria', categoria);
-    return this.http.get<any>(`${this.url}${this.path}/product/private/getProductStore`, {
+      .set('categoria', categoria)
+      .set('userId', userId);
+    return this.http.get<any>(`${this.url}${this.path}/product/private/getProductStore`,
+      {
       params,
       withCredentials: true,
     });
@@ -26,5 +28,29 @@ export class ProductService {
     return this.http.get<ProductCategory[]>(`${this.url}${this.path}/category/private`, {
       withCredentials: true,
     });
+  }
+
+  addOrRemoveProductFavoriteByUser(
+    productId: string,
+    userId:string,
+    page: number,
+    cantidad:number,
+    categoria:string,
+  ){
+    const params = new HttpParams()
+      .set('productId', productId)
+      .set('userId', userId)
+      .set('page', page)
+      .set('cantidad', cantidad)
+      .set('categoria', categoria);
+    console.log(params);
+    return this.http.post<any>(
+      `${this.url}${this.path}/product/private/addOrRemoveProductFavoriteByUser`,
+      null,
+      {
+        withCredentials: true,
+        params,
+      },
+    );
   }
 }

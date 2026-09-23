@@ -2,11 +2,9 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Product, ProductCategory } from '../../../model/product.model';
 import { ProductService } from '../../../services/product.service';
 import { Pageable } from '../../components_generics/pageable/pageable';
-import { Cart } from '../../../model/Cart';
-import { AuthService } from '../../../services/auth.service';
+import { Cart, UpdateCartDetail} from '../../../model/Cart';
 import { PaymmentService } from '../../../services/paymment.service';
 import { AuthstateService } from '../../../services/authstate.service';
-import { Products } from '../../public/products/products';
 
 @Component({
   imports: [Pageable],
@@ -17,7 +15,7 @@ export class Store {
   products: Product[] = [];
   categories: ProductCategory[] = [];
   productCategory: string = 'DULCE';
-  cantidad: string = '16';
+  cantidad: number = 16;
   currentPage = 0;
   totalPages = 0;
   categoryTitle = 'Pan Dulce';
@@ -37,7 +35,7 @@ export class Store {
     this.findAllCategories();
     console.log(this.cantidad);
     console.log(this.productCategory);
-    this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
+    this.findAllProductCategories(this.productCategory, this.cantidad.toString(), this.currentPage.toString());
     this.findCart(this.userId);
   }
 
@@ -45,6 +43,7 @@ export class Store {
     if (typeof userId === 'string') {
       this.paymmentService.getCart(userId).subscribe({
         next: (data) => {
+          console.log('Carrito');
           console.log(data);
           this.cart = data;
           this.mostrarCart = true;
@@ -67,7 +66,7 @@ export class Store {
     this.productCategory = category.productCategoryId;
     this.categoryTitle = category.typeName;
     this.currentPage = 0;
-    this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
+    this.findAllProductCategories(this.productCategory, this.cantidad.toString(), this.currentPage.toString());
     this.cdr.detectChanges();
   }
 
@@ -81,10 +80,9 @@ export class Store {
   }
 
   findAllProductCategories(productCategory: string, cantidad: string, pagina: string): void {
-
-    this.productService.getProductsStore(pagina, cantidad, productCategory).subscribe({
+    this.productService.getProductsStore(pagina, cantidad, productCategory, this.userId).subscribe({
       next: (page: any) => {
-
+        console.log(page);
         this.products = page.content ?? [];
         this.currentPage = page.number ?? 0;
         this.totalPages = page.totalPages ?? 0;
@@ -96,33 +94,56 @@ export class Store {
         this.currentPage = 0;
         this.totalPages = 0;
         this.cdr.detectChanges();
-      }
+      },
     });
   }
 
   actualizarVariable(event: Event): void {
     const combo = event.target as HTMLSelectElement;
-    this.cantidad = combo.value;
+    this.cantidad = Number(combo.value);
     this.currentPage = 0;
-    this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
+    this.findAllProductCategories(this.productCategory, this.cantidad.toString(), this.currentPage.toString());
   }
 
   changePage(page: number) {
     this.currentPage = page;
-    this.findAllProductCategories(this.productCategory, this.cantidad, this.currentPage.toString());
+    this.findAllProductCategories(this.productCategory, this.cantidad.toString(), this.currentPage.toString());
   }
 
-  addCart(product:Product): void {
+  addCart(product: Product): void {
     this.paymmentService.createCartOrAddCartDetail(product.productId, this.userId).subscribe({
       next: (data) => {
         console.log(data);
         this.cart = data;
         this.cdr.detectChanges();
-      }
+      },
     });
   }
 
-  additem(itemId:string): void {
+  additem(itemId: string, action:string): void {
+    const request: UpdateCartDetail = {
+      cartDetailAcction: action,
+      cartDetailId: itemId,
+    };
 
+
+  }
+
+  addOrRemoveProductFavoriteByUserFromFavorites(
+    productId: string,
+    userId: string,
+    page: number,
+    cantidad: number,
+    categoria: string,
+  ) {
+    this.productService
+      .addOrRemoveProductFavoriteByUser(productId, userId, page, cantidad, categoria)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.products = data.content;
+          this.cdr.detectChanges();
+        },
+      });
   }
 }

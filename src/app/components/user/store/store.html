@@ -234,13 +234,26 @@
 
             <div class="store__product-image">
 
-              <button
-                class="store__favorite"
-                type="button"
-                aria-label="Agregar a favoritos"
-              >
-                ♡
-              </button>
+              @if (product.favorite === true) {
+                <button
+                  class="store__favorite store__favorite--fav"
+                  type="button"
+                  aria-label="Agregar a favoritos"
+                  (click)="addOrRemoveProductFavoriteByUserFromFavorites(product.productId, userId, currentPage, cantidad, productCategory)"
+                >
+                  ♡
+                </button>
+              } @else {
+                <button
+                  class="store__favorite store__favorite--nofav"
+                  type="button"
+                  aria-label="Agregar a favoritos"
+                  (click)="addOrRemoveProductFavoriteByUserFromFavorites(product.productId, userId, currentPage, cantidad, productCategory)"
+                >
+                  ♡
+                </button>
+              }
+
 
               <img
                 [src]="'data:image/png;base64,' + product.imageUrl"
@@ -342,7 +355,7 @@
                 {{cartItem.quantity}}
               </span>
 
-              <button (click)="additem(cartItem.cartDetailId)">
+              <button (click)="additem(cartItem.cartDetailId, 'ADD')">
                 +
               </button>
 
@@ -350,12 +363,16 @@
 
           </div>
 
-          <button
-            class="store__cart-remove"
-            aria-label="Eliminar producto"
-          >
-            ♡
-          </button>
+          @if (cartItem.favorite === true) {
+            <button
+              class="store__cart-remove"
+              aria-label="Eliminar producto"
+            >
+              ♡
+            </button>
+          }
+
+
 
         </article>
           }

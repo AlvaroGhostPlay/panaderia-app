@@ -1,6 +1,6 @@
 import { inject, Service } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Cart } from '../model/Cart';
+import { Cart, UpdateCartDetail } from '../model/Cart';
 import { Observable } from 'rxjs';
 
 @Service()
@@ -28,5 +28,5 @@ export class PaymmentService {
     });
   }
 
-  addCartDetail()
+  addCartDetail(request: UpdateCartDetail) {}
 }
